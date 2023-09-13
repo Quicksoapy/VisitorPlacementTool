@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    @foreach (var sector in Model.Sectors)
+    {
+        <div class="card" style="width: 18rem; float: left;">
+            <h5 class="card-title">Sector @sector.Letter</h5>
+            @for (int i = 0; i < sector.RowCount; i++)
+            {
+                <ul class="list-group list-group-flush" style="float: left;">
+                    @for (int j = 0; j < sector.ColumnCount; j++)
+                    {
+                        <li class="list-group-item">Cras justo odio</li>
+                    }
+                </ul>
+            }
+        </div>
+    }
+</div>
+
+<div>
+    <form method="post">
+      <div class="form-group">
+        <label>Row count</label>
+        <input type="text" class="form-control" asp-for="RowCount" id="RowCount" placeholder="Place your desired amount of rows here">
+      </div>
+        <div class="form-group">
+            <label for="ColumnCount">Column count</label>
+            <input type="text" class="form-control" id="ColumnCount" asp-for="ColumnCount" placeholder="Place your desired amount of columns here">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
